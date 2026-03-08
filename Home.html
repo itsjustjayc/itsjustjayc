@@ -1,0 +1,858 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Demilade's Portfolio Space</title>
+        <link rel="icon" href="icons8-favicon-48.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="icons8-favicon-96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="icons8-favicon-48.png"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0da6f2",
+              "background-light": "#f5f7f8",
+              "background-dark": "#101c22",
+            },
+            fontFamily: {
+              display: ["Manrope", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "yXT4JTbhyj6m_tS2D",
+      });
+   })();
+</script>
+<script src="script.js"></script>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden"
+  >
+    <div class="layout-container flex h-full grow flex-col">
+      <!-- Top Navigation -->
+      <header
+  class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-6 md:px-20 py-4 sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-50"
+>
+  <div class="flex items-center gap-4">
+    <div class="text-primary"></div>
+    <h2 class="text-lg font-bold leading-tight tracking-tight">
+      Demilade's Space
+    </h2>
+  </div>
+
+  <!-- Desktop nav -->
+  <div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+    <nav class="flex items-center gap-8">
+      <a class="text-sm font-medium hover:text-primary transition-colors" href="#about">About</a>
+      <a class="text-sm font-medium hover:text-primary transition-colors" href="#experience">Experience</a>
+      <a class="text-sm font-medium hover:text-primary transition-colors" href="#projects">Projects</a>
+      <a class="text-sm font-medium hover:text-primary transition-colors" href="#contact">Contact</a>
+    </nav>
+    <a href="Demilade Resume Updated.pdf" download>
+      <button class="flex min-w-[120px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-all">
+        <span>Download CV</span>
+      </button>
+    </a>
+  </div>
+
+  <!-- Mobile menu button -->
+  <div class="md:hidden">
+    <span class="material-symbols-outlined cursor-pointer select-none" id="menu-toggle">menu</span>
+  </div>
+</header>
+
+<!-- Mobile dropdown -->
+<div
+  id="mobile-menu"
+  class="md:hidden hidden flex-col bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-6 py-4 gap-4 z-40"
+>
+  <a class="text-sm font-medium hover:text-primary transition-colors py-2 border-b border-slate-100 dark:border-slate-800" href="#about" onclick="closeMobileMenu()">About</a>
+  <a class="text-sm font-medium hover:text-primary transition-colors py-2 border-b border-slate-100 dark:border-slate-800" href="#experience" onclick="closeMobileMenu()">Experience</a>
+  <a class="text-sm font-medium hover:text-primary transition-colors py-2 border-b border-slate-100 dark:border-slate-800" href="#projects" onclick="closeMobileMenu()">Projects</a>
+  <a class="text-sm font-medium hover:text-primary transition-colors py-2 border-b border-slate-100 dark:border-slate-800" href="#contact" onclick="closeMobileMenu()">Contact</a>
+  <a href="Demilade Resume Updated.pdf" download>
+    <button class="w-full cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-all mt-1">
+      Download CV
+    </button>
+  </a>
+</div>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = !mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden', isOpen);
+    mobileMenu.classList.toggle('flex', !isOpen);
+    menuToggle.textContent = isOpen ? 'menu' : 'close';
+  });
+
+  function closeMobileMenu() {
+    mobileMenu.classList.add('hidden');
+    mobileMenu.classList.remove('flex'); 
+    menuToggle.textContent = 'menu';
+  }
+</script>
+      <main class="flex-1">
+        <!-- Hero Section -->
+        <section
+          class="relative min-h-[85vh] flex flex-col items-center justify-center px-6 py-20 text-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0 opacity-30 pointer-events-none bg-[radial-gradient(#0da6f2_1px,transparent_1px)] [background-size:40px_40px]"
+          ></div>
+          <div
+            class="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-8"
+          >
+            <div
+              class="mx-auto w-[450px] h-[400px] flex items-center justify-center"
+            >
+              <script
+                src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.5/dist/dotlottie-wc.js"
+                type="module"
+              ></script>
+              <dotlottie-wc
+                src="https://lottie.host/eb84fbdb-9a3a-45d7-8097-b30372da088b/460vhJploj.lottie"
+                style="width: 100%; height: 100%"
+                autoplay
+                loop
+                aria-label="Animated developer working on laptop"
+                role="img"
+              >
+              </dotlottie-wc>
+            </div>
+            <div class="space-y-4">
+              <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
+                Hi, I'm <span class="text-primary">Demilade</span><br />
+                Welcome to my space
+              </h1>
+              <p
+                class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto font-normal"
+              >
+                Mechatronics Engineer and Web Developer passionate about
+                building functional and aesthetic solutions.
+              </p>
+            </div>  
+          <a
+          href="Demilade Resume Updated.pdf"
+          download
+          class="inline-flex items-center gap-2 text-primary font-bold border-b-2 border-primary pb-1 hover:gap-4 transition-all group"
+        >
+              Download CV
+              <span
+                class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1"
+                >download</span
+              >
+            </a>
+          </div>
+        </section>
+        <!-- About Me -->
+        <section class="py-24 px-6 md:px-20 max-w-7xl mx-auto" id="about">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-2">About Me</h2>
+            <p class="text-primary font-medium">Who is Demilade?</p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6">
+              <p>
+                I'm a detail-obsessed mechatronics engineer + frontend dev,
+                master of automation, system design, and sleek UI. I work with
+                HTML, CSS, JavaScript and React to craft responsive web apps and
+                also turn engineering principles into real-world wins by
+                building various autonomous systems...
+              </p>
+              <br />
+              <p>
+                As a curious, growth-oriented individual with deep interests in
+                technology, engineering, and hands-on problem-solving, I
+                continually pursue knowledge in areas like software development,
+                renewable energy, and core engineering principles, posing
+                questions that prioritize accuracy, structure, and real-world
+                applications over pure theory while thriving in independent
+                learning.
+              </p>
+              <br />
+              <p>
+                Additionally, I exhibit versatility and broad awareness by
+                seamlessly navigating between technical subjects, general
+                knowledge, and creative endeavors.
+              </p>
+              <br />
+              <p>
+                Overall, I come across as a motivated learner with a technical
+                mindset, an interest in innovation and a habit of asking
+                purposeful questions to improve my skills and understanding. I
+                would professionally fit the profile of an aspiring tech or
+                mechatronics engineering professional with strong potential for
+                growth, especially in fields involving software, data, or
+                renewable energy.
+              </p>
+            </div>
+            <div class="relative">
+              <div
+                class="absolute -inset-4 bg-primary/5 rounded-xl -rotate-2"
+              ></div>
+              <div
+                class="relative rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl"
+              >
+                <img
+                  class="w-full h-full object-cover"
+                  data-alt="Vibrant illustration of a Black man with glasses looking at a screen with code and gear icons"
+                  src="Frontend.jpg"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- My Experience -->
+        <section class="py-24 bg-slate-50 dark:bg-slate-900/50" id="experience">
+          <div class="max-w-7xl mx-auto px-6 md:px-20">
+            <h2
+              class="text-3xl md:text-4xl font-bold mb-12 text-center md:text-left"
+            >
+              My Experience
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+              <!-- Experience 1 -->
+              <article
+                class="bg-gray-100 dark:bg-gray-900/50 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-gray-300 dark:border-gray-800 hover:scale-105 transition-transform duration-300"
+              >
+                <div class="p-8">
+                  <div
+                    class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-4"
+                  >
+                    <time datetime="2023-02" class="font-medium"
+                      >Feb. 2023 – Aug. 2023</time
+                    >
+                    <span
+                      class="px-3 py-1 bg-gray-200 dark:bg-gray-800/70 rounded-full text-xs font-medium"
+                      >Onsite</span
+                    >
+                  </div>
+                  <h3
+                    class="mt-6 text-2xl font-bold text-cyan-400 leading-tight"
+                  >
+                    Research Assistant
+                  </h3>
+                  <p class="mt-2 text-lg">
+                    Institute of Agricultural Research and Training, Ibadan
+                  </p>
+                  <p class="mt-6 text-base leading-relaxed">
+                    Conducted engineering research focused on innovative
+                    agricultural applications, contributing to the development
+                    and optimization of farming technologies and processes.
+                  </p>
+                  <div class="mt-10 flex items-center gap-x-4">
+                    <img
+                      src="profil_pic1.jpg"
+                      alt="Jayeoba Demilade"
+                      class="h-12 w-12 rounded-full ring-2 ring-gray-700 object-cover"
+                    />
+                    <div>
+                      <p class="font-semibold text-gray-900 dark:text-white">
+                        Jayeoba Demilade
+                      </p>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Research Engineer
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <!-- Experience 2 -->
+              <article
+                class="bg-gray-100 dark:bg-gray-900/50 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-gray-300 dark:border-gray-800 hover:scale-105 transition-transform duration-300"
+              >
+                <div class="p-8">
+                  <div
+                    class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-4"
+                  >
+                    <time datetime="2024-03" class="font-medium"
+                      >Mar. 2024 – Aug. 2024</time
+                    >
+                    <span
+                      class="px-3 py-1 bg-gray-200 dark:bg-gray-800/70 rounded-full text-xs font-medium"
+                      >Onsite</span
+                    >
+                  </div>
+                  <h3
+                    class="mt-6 text-2xl font-bold text-cyan-400 leading-tight"
+                  >
+                    Engineering Intern
+                  </h3>
+                  <p class="mt-2 text-lg">
+                    Transmission Company of Nigeria (TCN), Ibadan
+                  </p>
+                  <p class="mt-6 text-base leading-relaxed">
+                    Assisted in the maintenance, troubleshooting, and repair of
+                    electrical equipment and machinery within high-voltage
+                    transmission infrastructure.
+                  </p>
+                  <div class="mt-10 flex items-center gap-x-4">
+                    <img
+                      src="profil_pic2.jpg"
+                      alt="Jayeoba Demilade"
+                      class="h-12 w-12 rounded-full ring-2 ring-gray-700 object-cover"
+                    />
+                    <div>
+                      <p class="font-semibold text-gray-900 dark:text-white">
+                        Jayeoba Demilade
+                      </p>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Electrical Engineering Intern
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Experience 3 -->
+              <article
+                class="bg-gray-100 dark:bg-gray-900/50 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-gray-300 dark:border-gray-800 hover:scale-105 transition-transform duration-300"
+              >
+                <div class="p-8">
+                  <div
+                    class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-4"
+                  >
+                    <time datetime="2025-11" class="font-medium"
+                      >Nov. 2025 – Mar. 2026</time
+                    >
+                    <span
+                      class="px-3 py-1 bg-gray-200 dark:bg-gray-800/70 rounded-full text-xs font-medium"
+                      >Hybrid</span
+                    >
+                  </div>
+                  <h3
+                    class="mt-6 text-2xl font-bold text-cyan-400 leading-tight"
+                  >
+                    Frontend Developer (Graduate Intern)
+                  </h3>
+                  <p class="mt-2 text-lg">
+                    SmartTeller Hub, Oke-ilewo, Abeokuta
+                  </p>
+                  <p class="mt-6 text-base leading-relaxed">
+                    Designed and implemented responsive frontend user interfaces
+                    for multiple client projects, focusing on clean code,
+                    accessibility, and modern web standards.
+                  </p>
+                  <div class="mt-10 flex items-center gap-x-4">
+                    <img
+                      src="Frontend.jpg"
+                      alt="Jayeoba Demilade"
+                      class="h-12 w-12 rounded-full ring-2 ring-gray-700 object-cover"
+                    />
+                    <div>
+                      <p class="font-semibold text-gray-900 dark:text-white">
+                        Jayeoba Demilade
+                      </p>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Frontend Developer
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Experience 4 -->
+              <article
+                class="bg-gray-100 dark:bg-gray-900/50 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-gray-300 dark:border-gray-800 hover:scale-105 transition-transform duration-300"
+              >
+                <div class="p-8">
+                  <div
+                    class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-4"
+                  >
+                    <time datetime="2025-11" class="font-medium"
+                      >Mar. 2026 – Oct. 2026</time
+                    >
+                    <span
+                      class="px-3 py-1 bg-gray-200 dark:bg-gray-800/70 rounded-full text-xs font-medium"
+                      >Onsite</span
+                    >
+                  </div>
+                  <h3
+                    class="mt-6 text-2xl font-bold text-cyan-400 leading-tight"
+                  >
+                    Graduate Intern
+                  </h3>
+                  <p class="mt-2 text-lg">
+                    E-Cornerstone Online Resources, Quarry Road, Abeokuta
+                  </p>
+                  <p class="mt-6 text-base leading-relaxed">
+                    Assist with solar panel installation and wiring under
+                    supervision and also helped survey sites and measure
+                    rooftops or open land for installation.
+                  </p>
+                  <div class="mt-10 flex items-center gap-x-4">
+                    <img
+                      src="e-cornerstone.jpg"
+                      alt="Jayeoba Demilade"
+                      class="h-12 w-12 rounded-full ring-2 ring-gray-700 object-cover"
+                    />
+                    <div>
+                      <p class="font-semibold text-gray-900 dark:text-white">
+                        Jayeoba Demilade
+                      </p>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Electrical Engineering Intern
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Engineering Projects -->
+        <section class="py-24 px-6 md:px-20 max-w-7xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold mb-12">
+            Engineering Projects
+          </h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div
+              class="group bg-slate-50 dark:bg-slate-800/30 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800"
+            >
+              <div class="aspect-video overflow-hidden">
+                <img
+                  class="w-full h-full object-cover transition-transform group-hover:scale-105"
+                  data-alt="Circuit board with complex wiring and components"
+                  src="AECT picture.png"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-primary font-bold text-lg mb-2">
+                  Automotive Electric Circuit Trainer (AECT)
+                </h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                  The AECT is the practical teaching/training device that
+                  illustrates the basic and advanced electrical circuitry used
+                  in modern automobiles.
+                </p>
+              </div>
+            </div>
+            <div
+              class="group bg-slate-50 dark:bg-slate-800/30 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800"
+            >
+              <div class="aspect-video overflow-hidden">
+                <img
+                  class="w-full h-full object-cover transition-transform group-hover:scale-105"
+                  data-alt="Close up of a color sorting machine mechanism"
+                  src="project 4.png"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-primary font-bold text-lg mb-2">
+                  Color-Sorting Machine
+                </h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                  An automotive color identification system that also sorts
+                  different materials based on their colors
+                </p>
+              </div>
+            </div>
+            <div
+              class="group bg-slate-50 dark:bg-slate-800/30 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800"
+            >
+              <div class="aspect-video overflow-hidden">
+                <img
+                  class="w-full h-full object-cover transition-transform group-hover:scale-105"
+                  data-alt="Solar panel installation with monitoring equipment"
+                  src="solar.jpg"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-primary font-bold text-lg mb-2">
+                  Solar Efficiency Tracker
+                </h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                  Dual-axis solar tracking system that increases energy harvest
+                  by 35% compared to static installations.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="group bg-slate-50 dark:bg-slate-800/30 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800"
+            >
+              <div class="aspect-video overflow-hidden">
+                <img
+                  class="w-full h-full object-cover transition-transform group-hover:scale-105"
+                  data-alt="Automotive dustbin"
+                  src="Automotive dustbin 1.jpg"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-primary font-bold text-lg mb-2">
+                  Self-Actuating Waste Receptacle with Proximity-Triggered Lid
+                </h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                  A sensor-driven, electromechanical bin featuring an infrared
+                  proximity detector, microcontroller logic, and servo-actuated
+                  lid.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Frontend Projects -->
+        <section class="py-24 bg-slate-50 dark:bg-slate-900/50">
+          <div class="max-w-7xl mx-auto px-6 md:px-20">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12">
+              Frontend Projects
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+              <div
+                class="bg-background-light dark:bg-slate-800/40 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row"
+              >
+                <div class="md:w-1/2 aspect-video md:aspect-auto">
+                  <img
+                    class="w-full h-full object-cover"
+                    data-alt="AECT Interace"
+                    src="project 1.png"
+                  />
+                </div>
+                <div class="p-8 md:w-1/2 flex flex-col justify-center">
+                  <h3 class="text-xl font-bold mb-3">AECT Interace</h3>
+                  <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                    The Automotive Electric Circuit Trainer (AECT) is an
+                    interactive simulation platform designed to teach automotive
+                    electrical systems.
+                  </p>
+                  <div class="flex gap-2">
+                    <span
+                      class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase"
+                      >Tailwind</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase"
+                      >Github</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-background-light dark:bg-slate-800/40 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row"
+              >
+                <div class="md:w-1/2 aspect-video md:aspect-auto">
+                  <img
+                    class="w-full h-full object-cover"
+                    data-alt="Screenshot of GuichetGPT Website"
+                    src="GuichetGPT Project.png"
+                  />
+                </div>
+                <div class="p-8 md:w-1/2 flex flex-col justify-center">
+                  <h3 class="text-xl font-bold mb-3">GuichetGPT</h3>
+                  <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                    An AI powered government website designed to assist
+                    applicants throughout the visa application process,
+                    providing intelligent guidance, automated responses, and
+                    real time support to improve accuracy and efficiency.
+                  </p>
+                  <div class="flex gap-2">
+                    <span
+                      class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase"
+                      >Tailwind</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-background-light dark:bg-slate-800/40 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row"
+              >
+                <div class="md:w-1/2 aspect-video md:aspect-auto">
+                  <img
+                    class="w-full h-full object-cover"
+                    data-alt="SmartTeller Website"
+                    src="Smartteller.png"
+                  />
+                </div>
+                <div class="p-8 md:w-1/2 flex flex-col justify-center">
+                  <h3 class="text-xl font-bold mb-3">SmartTeller Website</h3>
+                  <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                    The official website for SmartTeller tech hub. Visit
+                    "smartteller.tech" to check out the design. Designed the UI
+                    and UX of the website using Bootstrap css and PHP.
+                  </p>
+                  <div class="flex gap-2">
+                    <span
+                      class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase"
+                      >Bootstrap</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase"
+                      >PHP</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-background-light dark:bg-slate-800/40 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row"
+              >
+                <div class="md:w-1/2 aspect-video md:aspect-auto">
+                  <img
+                    class="w-full h-full object-cover"
+                    data-alt="Portfolio Website"
+                    src="Portfolio website.png"
+                  />
+                </div>
+                <div class="p-8 md:w-1/2 flex flex-col justify-center">
+                  <h3 class="text-xl font-bold mb-3">Portfolio Website</h3>
+                  <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                    A responsive portfolio site built with HTML, CSS, and JavaScript animations
+                  </p>
+                  <div class="flex gap-2">
+                    <span
+                      class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase"
+                      >Tailwind</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase"
+                      >Lottie.js</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Tools -->
+        <section class="py-24 px-6 md:px-20 max-w-7xl mx-auto">
+  <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+    Tools I Work With
+  </h2>
+
+  <!-- Row 1: 5 items -->
+  <div class="flex flex-wrap justify-center gap-4 mb-4">
+    <span class="px-6 py-3 bg-red-500/10 text-red-500 font-bold rounded-full border border-red-500/20">HTML</span>
+    <span class="px-6 py-3 bg-purple-500/10 text-purple-500 font-bold rounded-full border border-purple-500/20">Bootstrap</span>
+    <span class="px-6 py-3 bg-yellow-500/10 text-yellow-500 font-bold rounded-full border border-yellow-500/20">JavaScript</span>
+    <span class="px-6 py-3 bg-blue-500/10 text-blue-500 font-bold rounded-full border border-blue-500/20">React</span>
+    <span class="px-6 py-3 bg-orange-500/10 text-orange-500 font-bold rounded-full border border-orange-500/20">Git/Github</span>
+  </div>
+
+  <!-- Row 2: 4 items -->
+  <div class="flex flex-wrap justify-center gap-4">
+    <span class="px-6 py-3 bg-cyan-500/10 text-cyan-500 font-bold rounded-full border border-cyan-500/20">Tailwind</span>
+    <span class="px-6 py-3 bg-green-500/10 text-green-500 font-bold rounded-full border border-green-500/20">Next.js</span>
+    <span class="px-6 py-3 bg-zinc-500/10 text-zinc-500 font-bold rounded-full border border-zinc-500/20">Python</span>
+    <span class="px-6 py-3 bg-indigo-500/10 text-indigo-500 font-bold rounded-full border border-indigo-500/20">Arduino</span>
+  </div>
+</section>
+        <!-- Contact -->
+        <section class="py-24 px-6 md:px-20 max-w-4xl mx-auto" id="contact">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl font-extrabold mb-4">Hit Me Up!</h2>
+            <p class="text-slate-500 dark:text-slate-400">
+              Have a project in mind? Let's talk about it.
+            </p>
+          </div>
+          <form class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label class="text-sm font-bold ml-1">Name</label>
+                <input
+                  class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-xl focus:ring-2 focus:ring-primary h-12 px-4 transition-all"
+                  placeholder="FullName"
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                />
+              </div>
+              <div class="space-y-2">
+                <label class="text-sm font-bold ml-1">Email</label>
+                <input
+                  class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-xl focus:ring-2 focus:ring-primary h-12 px-4 transition-all"
+                  placeholder="Email@example.com"
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                />
+              </div>
+            </div>
+            <div class="space-y-2">
+              <label class="text-sm font-bold ml-1">Subject</label>
+              <input
+                class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-xl focus:ring-2 focus:ring-primary h-12 px-4 transition-all"
+                placeholder="I have an idea..."
+                type="text"
+                id="subject"
+                name="subject"
+                required
+              />
+            </div>
+            <div class="space-y-2">
+              <label class="text-sm font-bold ml-1">Message</label>
+              <textarea
+                class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-xl focus:ring-2 focus:ring-primary p-4 transition-all"
+                placeholder="Your message here..."
+                rows="5"
+                id="message"
+                name="message"
+                required
+              ></textarea>
+            </div>
+            
+            <button
+          type="submit"
+          class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all"
+          onclick="sendMail()"
+        >
+          Send Message 🚀
+        </button>
+            <div class="social-icons flex gap-6 mt-4">
+          <!-- LinkedIn -->
+          <a
+            href="https://www.linkedin.com/in/demilade-jayeoba-3b80752b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+            target="_blank"
+            aria-label="LinkedIn"
+            class="text-gray-900 dark:text-gray-50 hover:text-cyan-400 hover:scale-110 transition-all duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              class="w-8 h-8"
+            >
+              <path
+                fill="gray"
+                d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5H4.5V24H.5V8.5zM8.5 8.5H12.2V10.3H12.3C12.8 9.3 14 8 16 8 19.6 8 20 10.3 20 13.5V24H16V14.5C16 12.8 15.7 11 13.8 11 11.8 11 11.5 12.6 11.5 14.5V24H7.5V8.5H8.5Z"
+              />
+            </svg>
+          </a>
+
+          <!-- Twitter/X -->
+          <a
+            href="https://x.com/itsjust_jayc?t=2IO4SVyV-rdiSisRz0AjqA&s=09"
+            target="_blank"
+            aria-label="Twitter"
+            class="text-gray-900 dark:text-gray-50 hover:text-cyan-400 hover:scale-110 transition-all duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              class="w-8 h-8"
+            >
+              <path
+                fill="gray"
+                d="M18.36 2H21.65L14.64 10.17L23 22H16.52L11.45 15.12L5.67 22H2.38L9.82 13.23L2 2H8.63L13.19 8.23L18.36 2ZM17.23 20H19.04L7.17 4H5.24L17.23 20Z"
+              />
+            </svg>
+          </a>
+
+          <!-- GitHub -->
+          <a
+            href="https://github.com/itsjustjayc"
+            target="_blank"
+            aria-label="GitHub"
+            class="text-gray-900 dark:text-gray-50 hover:text-cyan-400 hover:scale-110 transition-all duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              class="w-8 h-8"
+            >
+              <path
+                fill="gray"
+                d="M12 0C5.37 0 0 5.4 0 12.07C0 17.36 3.44 21.8 8.21 23.39C8.82 23.5 9.05 23.15 9.05 22.84C9.05 22.56 9.04 21.73 9.03 20.73C5.67 21.46 4.97 19.18 4.97 19.18C4.43 17.86 3.63 17.5 3.63 17.5C2.55 16.77 3.71 16.78 3.71 16.78C4.91 16.87 5.54 18.05 5.54 18.05C6.6 19.87 8.32 19.35 9.02 19.06C9.13 18.28 9.43 17.77 9.76 17.47C7.11 17.15 4.34 16.12 4.34 11.5C4.34 10.19 4.81 9.12 5.61 8.3C5.48 8 5.07 6.75 5.73 5.07C5.73 5.07 6.74 4.75 9.03 6.33C9.99 6.07 11.03 5.94 12.07 5.94C13.11 5.94 14.15 6.07 15.11 6.33C17.39 4.75 18.4 5.07 18.4 5.07C19.06 6.75 18.66 8 18.53 8.3C19.34 9.12 19.8 10.19 19.8 11.5C19.8 16.14 17.02 17.14 14.36 17.47C14.78 17.84 15.15 18.6 15.15 19.73C15.15 21.3 15.13 22.45 15.13 22.84C15.13 23.15 15.36 23.51 15.98 23.39C20.74 21.8 24.18 17.36 24.18 12.07C24.18 5.4 18.81 0 12 0Z"
+              />
+            </svg>
+          </a>
+
+          <!-- Email -->
+          <a
+            href="mailto:jayeobademilade@gmail.com"
+            aria-label="Email"
+            class="text-gray-900 dark:text-gray-50 hover:text-cyan-400 hover:scale-110 transition-all duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              class="w-8 h-8"
+            >
+              <path
+                fill="gray"
+                d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"
+              />
+            </svg>
+          </a>
+
+          </form>
+        </section>
+      </main>
+      <!-- Footer -->
+      <footer
+        class="py-10 border-t border-slate-200 dark:border-slate-800 px-6 md:px-20"
+      >
+        <div
+          class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <p class="text-sm text-slate-500 dark:text-slate-400">
+            © 2026 Jayc | Frontend Developer
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+     // EmailJS send function
+      const contactForm = document.getElementById("contact-form");
+      contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();  
+
+        emailjs.sendForm("porfolio_webmessages", "template_lzwmz7g", this).then(
+          () => {
+            alert("Message sent successfully!");
+            contactForm.reset();
+          },
+          (error) => {
+            alert("Failed to send message. Please try again.");
+            console.error("EmailJS error:", error);
+          }
+        );
+      });
+    </script>
+  </body>
+</html>
