@@ -1,0 +1,1153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demilade Jayeoba: Engineer & Developer</title>
+  <link rel="icon" href="icons8-favicon-48.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>(function(){ emailjs.init({ publicKey: "yXT4JTbhyj6m_tS2D" }); })();</script>
+
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --cyan:    #00e5ff;
+      --cyan-dim:#00b8cc;
+      --bg:      #080d12;
+      --bg2:     #0d1520;
+      --bg3:     #111c28;
+      --border:  rgba(0,229,255,.12);
+      --border2: rgba(0,229,255,.22);
+      --text:    #e2eaf2;
+      --muted:   #5a7285;
+      --muted2:  #8aa0b0;
+      --card:    rgba(13,21,32,.75);
+      --glow:    0 0 24px rgba(0,229,255,.18);
+    }
+
+    /* ── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
+    button { cursor: pointer; font-family: inherit; border: none; outline: none; }
+
+    /* ── CIRCUIT GRID BG ────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .55;
+    }
+
+    /* ── UTIL ───────────────────────────────────────────── */
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .syne { font-family: 'Syne', sans-serif; }
+    .cyan { color: var(--cyan); }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 3.5rem); position: relative; z-index: 1; }
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      border: 1px solid var(--border2);
+      border-radius: 3px;
+      padding: .25rem .6rem;
+      display: inline-block;
+    }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border2);
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+    }
+    section { position: relative; z-index: 1; }
+
+    /* fade-up on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── NAV ────────────────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,13,18,.82);
+      backdrop-filter: blur(18px);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .9rem;
+      color: var(--cyan);
+      letter-spacing: .06em;
+    }
+    .nav-logo span { color: var(--muted2); }
+    nav.desktop { display: flex; align-items: center; gap: 2.2rem; }
+    nav.desktop a {
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--muted2);
+      letter-spacing: .04em;
+      transition: color .2s;
+      position: relative;
+    }
+    nav.desktop a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0; right: 0;
+      height: 1px;
+      background: var(--cyan);
+      transform: scaleX(0);
+      transition: transform .25s;
+      transform-origin: left;
+    }
+    nav.desktop a:hover { color: var(--cyan); }
+    nav.desktop a:hover::after { transform: scaleX(1); }
+
+    .btn-primary {
+      background: var(--cyan);
+      color: #000;
+      font-weight: 700;
+      font-size: .8rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .55rem 1.3rem;
+      border-radius: 4px;
+      transition: background .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { background: var(--cyan-dim); box-shadow: var(--glow); }
+
+    #menu-toggle {
+      display: none;
+      background: none;
+      color: var(--cyan);
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+    #mobile-menu {
+      display: none;
+      flex-direction: column;
+      border-top: 1px solid var(--border);
+      padding: 1rem 0;
+      gap: .25rem;
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu a {
+      font-size: .9rem;
+      color: var(--muted2);
+      padding: .65rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: color .2s;
+    }
+    #mobile-menu a:last-of-type { border-bottom: none; }
+    #mobile-menu a:hover { color: var(--cyan); }
+    #mobile-menu .btn-primary { margin-top: .75rem; text-align: center; }
+
+    @media (max-width: 768px) {
+      nav.desktop, header .btn-primary { display: none; }
+      #menu-toggle { display: block; }
+    }
+
+    /* ── HERO ───────────────────────────────────────────── */
+    #hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 0 4rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 8px var(--cyan);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .5; transform: scale(.8); }
+    }
+    .hero-eyebrow p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem;
+      color: var(--cyan);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      margin-bottom: 1.25rem;
+    }
+    .hero-name .line2 { color: var(--cyan); }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted2);
+      max-width: 420px;
+      line-height: 1.75;
+      margin-bottom: 2.25rem;
+    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-outline {
+      border: 1px solid var(--border2);
+      color: var(--muted2);
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: .55rem 1.3rem;
+      border-radius: 4px;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+
+    /* hero visual */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-lottie-wrap {
+      width: min(420px, 90vw);
+      height: min(380px, 80vw);
+      position: relative;
+    }
+    .hero-lottie-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      border: 1px solid var(--border2);
+      border-radius: 12px;
+      animation: spin-border 8s linear infinite;
+    }
+    @keyframes spin-border {
+      0%   { border-color: rgba(0,229,255,.22) rgba(0,229,255,.04) rgba(0,229,255,.04) rgba(0,229,255,.04); }
+      25%  { border-color: rgba(0,229,255,.04) rgba(0,229,255,.22) rgba(0,229,255,.04) rgba(0,229,255,.04); }
+      50%  { border-color: rgba(0,229,255,.04) rgba(0,229,255,.04) rgba(0,229,255,.22) rgba(0,229,255,.04); }
+      75%  { border-color: rgba(0,229,255,.04) rgba(0,229,255,.04) rgba(0,229,255,.04) rgba(0,229,255,.22); }
+      100% { border-color: rgba(0,229,255,.22) rgba(0,229,255,.04) rgba(0,229,255,.04) rgba(0,229,255,.04); }
+    }
+    dotlottie-wc { width: 100%; height: 100%; display: block; }
+
+    /* hero stats */
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .stat { border-left: 2px solid var(--cyan); padding-left: .85rem; }
+    .stat .num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--cyan);
+      line-height: 1;
+    }
+    .stat .lbl {
+      font-size: .72rem;
+      color: var(--muted);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-top: .2rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { order: -1; }
+      .hero-lottie-wrap { width: min(280px, 85vw); height: min(240px, 75vw); }
+    }
+
+    /* ── DIVIDER ────────────────────────────────────────── */
+    .mech-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border2) 30%, var(--cyan) 50%, var(--border2) 70%, transparent);
+      position: relative;
+      z-index: 1;
+    }
+    .mech-divider::before, .mech-divider::after {
+      content: '◆';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: .45rem;
+      color: var(--cyan);
+    }
+    .mech-divider::before { left: calc(50% - 40px); }
+    .mech-divider::after  { left: calc(50% + 32px); }
+
+    /* ── ABOUT ──────────────────────────────────────────── */
+    #about { padding: 7rem 0; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-text p {
+      color: var(--muted2);
+      margin-bottom: 1.25rem;
+      font-size: .97rem;
+      line-height: 1.85;
+    }
+    .about-text p strong { color: var(--text); }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border: 1px solid var(--border2);
+      border-radius: 10px;
+      pointer-events: none;
+    }
+    .about-img-wrap::after {
+      content: '';
+      position: absolute;
+      top: -6px; left: -6px;
+      width: 24px; height: 24px;
+      border-top: 2px solid var(--cyan);
+      border-left: 2px solid var(--cyan);
+    }
+    .corner-br {
+      position: absolute;
+      bottom: -6px; right: -6px;
+      width: 24px; height: 24px;
+      border-bottom: 2px solid var(--cyan);
+      border-right: 2px solid var(--cyan);
+    }
+    .about-img-wrap img {
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      object-fit: cover;
+      height: 420px;
+    }
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── EXPERIENCE ─────────────────────────────────────── */
+    #experience {
+      padding: 7rem 0;
+      background:
+        linear-gradient(to bottom, transparent, var(--bg2) 20%, var(--bg2) 80%, transparent);
+    }
+    .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .exp-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem 2rem;
+      transition: border-color .25s, box-shadow .25s, transform .25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--cyan);
+      transition: height .35s ease;
+    }
+    .exp-card:hover::before { height: 100%; }
+    .exp-card:hover {
+      border-color: var(--border2);
+      box-shadow: var(--glow);
+      transform: translateY(-3px);
+    }
+    .exp-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+    .exp-meta time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem;
+      color: var(--muted);
+      letter-spacing: .06em;
+    }
+    .exp-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .65rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border: 1px solid var(--border2);
+      border-radius: 3px;
+      padding: .2rem .5rem;
+      color: var(--muted2);
+    }
+    .exp-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cyan);
+      margin-bottom: .4rem;
+    }
+    .exp-card .company {
+      font-size: .85rem;
+      color: var(--muted2);
+      margin-bottom: 1rem;
+    }
+    .exp-card p {
+      font-size: .875rem;
+      color: var(--muted2);
+      line-height: 1.75;
+    }
+    .exp-person {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .exp-person img {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--border2);
+      flex-shrink: 0;
+    }
+    .exp-person .name { font-size: .83rem; font-weight: 600; color: var(--text); }
+    .exp-person .role { font-family: 'JetBrains Mono', monospace; font-size: .68rem; color: var(--muted); }
+    @media (max-width: 768px) { .exp-grid { grid-template-columns: 1fr; } }
+
+    /* ── PROJECTS ───────────────────────────────────────── */
+    #eng-projects, #fe-projects { padding: 7rem 0; }
+    .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .proj-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: border-color .25s, box-shadow .25s, transform .25s;
+    }
+    .proj-card:hover {
+      border-color: var(--border2);
+      box-shadow: var(--glow);
+      transform: translateY(-4px);
+    }
+    .proj-img {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      position: relative;
+    }
+    .proj-img img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+      filter: saturate(.85) brightness(.9);
+    }
+    .proj-card:hover .proj-img img {
+      transform: scale(1.05);
+      filter: saturate(1) brightness(1);
+    }
+    .proj-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,13,18,.7) 0%, transparent 50%);
+    }
+    .proj-body { padding: 1.25rem 1.5rem 1.5rem; }
+    .proj-body h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: .5rem;
+      line-height: 1.3;
+    }
+    .proj-body p {
+      font-size: .82rem;
+      color: var(--muted2);
+      line-height: 1.7;
+    }
+    .proj-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin-top: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s;
+    }
+    .proj-link:hover { border-color: var(--cyan); }
+    .proj-link svg { width: 12px; height: 12px; fill: currentColor; }
+    @media (max-width: 900px) { .proj-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 580px) { .proj-grid { grid-template-columns: 1fr; } }
+
+    /* ── TOOLS ──────────────────────────────────────────── */
+    #tools { padding: 6rem 0; background: linear-gradient(to bottom, transparent, var(--bg2) 20%, var(--bg2) 80%, transparent); }
+    .tools-header { text-align: center; margin-bottom: 3rem; }
+    .tools-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      justify-content: center;
+    }
+    .tool-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .5rem 1.1rem;
+      border-radius: 4px;
+      border: 1px solid;
+      transition: box-shadow .2s, transform .2s;
+      cursor: default;
+    }
+    .tool-chip:hover { transform: translateY(-2px); }
+    .chip-red    { color: #ff6b6b; border-color: rgba(255,107,107,.3); background: rgba(255,107,107,.07); }
+    .chip-purple { color: #b983ff; border-color: rgba(185,131,255,.3); background: rgba(185,131,255,.07); }
+    .chip-yellow { color: #f7c948; border-color: rgba(247,201,72,.3); background: rgba(247,201,72,.07); }
+    .chip-blue   { color: #61b3ff; border-color: rgba(97,179,255,.3); background: rgba(97,179,255,.07); }
+    .chip-orange { color: #ff9a5c; border-color: rgba(255,154,92,.3); background: rgba(255,154,92,.07); }
+    .chip-cyan   { color: #00e5ff; border-color: rgba(0,229,255,.3); background: rgba(0,229,255,.07); }
+    .chip-green  { color: #6bffb8; border-color: rgba(107,255,184,.3); background: rgba(107,255,184,.07); }
+    .chip-slate  { color: #94aabb; border-color: rgba(148,170,187,.3); background: rgba(148,170,187,.07); }
+    .chip-indigo { color: #7b9fff; border-color: rgba(123,159,255,.3); background: rgba(123,159,255,.07); }
+
+    /* ── CONTACT ────────────────────────────────────────── */
+    #contact { padding: 7rem 0; }
+    .contact-wrap { max-width: 680px; margin: 0 auto; }
+    .contact-header { text-align: center; margin-bottom: 3rem; }
+    .contact-header p {
+      color: var(--muted2);
+      margin-top: .75rem;
+      font-size: .95rem;
+    }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .field { display: flex; flex-direction: column; gap: .45rem; }
+    .field label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .field input, .field textarea {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: .9rem;
+      padding: .75rem 1rem;
+      transition: border-color .2s;
+      width: 100%;
+      resize: vertical;
+    }
+    .field input:focus, .field textarea:focus {
+      outline: none;
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(0,229,255,.08);
+    }
+    .field input::placeholder, .field textarea::placeholder { color: var(--muted); }
+    .form-full { grid-column: 1 / -1; }
+
+    .btn-send {
+      width: 100%;
+      margin-top: .5rem;
+      background: var(--cyan);
+      color: #000;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 1rem;
+      border-radius: 5px;
+      transition: background .2s, box-shadow .2s;
+    }
+    .btn-send:hover { background: var(--cyan-dim); box-shadow: var(--glow); }
+
+    .social-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .social-row a {
+      color: var(--muted2);
+      transition: color .2s, transform .2s;
+    }
+    .social-row a:hover { color: var(--cyan); transform: translateY(-2px); }
+    .social-row svg { width: 22px; height: 22px; fill: currentColor; }
+
+    @media (max-width: 560px) { .form-grid { grid-template-columns: 1fr; } }
+
+    /* ── FOOTER ─────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    footer p, footer span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
+      color: var(--muted);
+      letter-spacing: .06em;
+    }
+    .footer-dot { color: var(--cyan); margin: 0 .3rem; }
+
+    /* ── NOISE GRAIN (optional texture) ─────────────────── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 200;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: .022;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────────── -->
+<header>
+  <div class="wrap">
+    <div class="nav-inner">
+      <div class="nav-logo">demilade<span>.dev</span></div>
+      <nav class="desktop">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#eng-projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="Demilade Resume Updated.pdf" download class="btn-primary">Download CV</a>
+      </nav>
+      <button id="menu-toggle" aria-label="Open menu">☰</button>
+    </div>
+    <div id="mobile-menu">
+      <a href="#about"        onclick="closeMenu()">About</a>
+      <a href="#experience"   onclick="closeMenu()">Experience</a>
+      <a href="#eng-projects" onclick="closeMenu()">Projects</a>
+      <a href="#contact"      onclick="closeMenu()">Contact</a>
+      <a href="Demilade Resume Updated.pdf" download class="btn-primary" onclick="closeMenu()">Download CV</a>
+    </div>
+  </div>
+</header>
+
+<!-- ── HERO ──────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">
+          <span class="dot"></span>
+          <p>Available for opportunities</p>
+        </div>
+        <h1 class="hero-name">
+          Hi, I'm<br>
+          <span class="line2">Demilade</span><br>
+          Jayeoba
+        </h1>
+        <p class="hero-sub">
+          Mechatronics Engineer &amp; Frontend Developer. I build systems that move and interfaces that breathe, from servo-driven hardware to pixel-perfect UIs.
+        </p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn-primary">Get in Touch</a>
+          <a href="#eng-projects" class="btn-outline">View Work</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="num">5+</div><div class="lbl">Years Building</div></div>
+          <div class="stat"><div class="num">9+</div><div class="lbl">Projects Shipped</div></div>
+          <div class="stat"><div class="num">1</div><div class="lbl">Engineering Discipline</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-lottie-wrap">
+          <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.5/dist/dotlottie-wc.js" type="module"></script>
+          <dotlottie-wc
+            src="https://lottie.host/eb84fbdb-9a3a-45d7-8097-b30372da088b/460vhJploj.lottie"
+            autoplay loop
+            aria-label="Developer working on laptop"
+            role="img">
+          </dotlottie-wc>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mech-divider"></div>
+
+<!-- ── ABOUT ─────────────────────────────────────────────── -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-label">01 — About</div>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <h2 class="section-title" style="margin-bottom:1.75rem">
+          Engineer by training.<br>Developer by choice.
+        </h2>
+        <p>
+          I'm a <strong>detail-obsessed mechatronics engineer and frontend developer</strong> someone equally at home debugging a motor driver circuit and refactoring a React component. I work with HTML, CSS, JavaScript, and React to craft responsive web apps, and I apply engineering first-principles to build autonomous, sensor-driven systems.
+        </p>
+        <p>
+          I'm growth-oriented, with deep interests across <strong>software development, renewable energy, and embedded systems</strong>. I thrive in independent learning environments and enjoy posing questions that prioritize accuracy, structure, and real-world application over pure theory.
+        </p>
+        <p>
+          My versatility lets me navigate seamlessly between technical depth and creative breadth from architecting a frontend web app to surveying a rooftop for a solar installation.
+        </p>
+        <div style="margin-top:1.75rem; display:flex; gap:.75rem; flex-wrap:wrap;">
+          <span class="tag">Mechatronics</span>
+          <span class="tag">Frontend Dev</span>
+          <span class="tag">Embedded Systems</span>
+          <span class="tag">Renewable Energy</span>
+        </div>
+      </div>
+      <div class="about-img-wrap">
+        <img src="Frontend.jpg" alt="Demilade Jayeoba" />
+        <div class="corner-br"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mech-divider"></div>
+
+<!-- ── EXPERIENCE ─────────────────────────────────────────── -->
+<section id="experience">
+  <div class="wrap">
+    <div class="section-label">02 — Experience</div>
+    <h2 class="section-title" style="margin-bottom:2.5rem">Where I've Worked</h2>
+    <div class="exp-grid">
+
+      <article class="exp-card reveal">
+        <div class="exp-meta">
+          <time datetime="2023-02">Feb 2023 – Aug 2023</time>
+          <span class="exp-badge">Onsite</span>
+        </div>
+        <h3>Research Assistant</h3>
+        <p class="company">Institute of Agricultural Research &amp; Training, Ibadan</p>
+        <p>Conducted engineering research focused on innovative agricultural applications, contributing to the development and optimization of farming technologies and processes.</p>
+        <div class="exp-person">
+          <img src="profil_pic1.jpg" alt="Jayeoba Demilade" />
+          <div><div class="name">Jayeoba Demilade</div><div class="role">Research Engineer</div></div>
+        </div>
+      </article>
+
+      <article class="exp-card reveal">
+        <div class="exp-meta">
+          <time datetime="2024-03">Mar 2024 – Aug 2024</time>
+          <span class="exp-badge">Onsite</span>
+        </div>
+        <h3>Engineering Intern</h3>
+        <p class="company">Transmission Company of Nigeria (TCN), Ibadan</p>
+        <p>Assisted in the maintenance, troubleshooting, and repair of electrical equipment and machinery within high-voltage transmission infrastructure.</p>
+        <div class="exp-person">
+          <img src="profil_pic2.jpg" alt="Jayeoba Demilade" />
+          <div><div class="name">Jayeoba Demilade</div><div class="role">Electrical Engineering Intern</div></div>
+        </div>
+      </article>
+
+      <article class="exp-card reveal">
+        <div class="exp-meta">
+          <time datetime="2025-11">Nov 2025 – Mar 2026</time>
+          <span class="exp-badge">Hybrid</span>
+        </div>
+        <h3>Frontend Developer (Graduate Intern)</h3>
+        <p class="company">SmartTeller Hub, Oke-ilewo, Abeokuta</p>
+        <p>Designed and implemented responsive frontend user interfaces for multiple client projects, focusing on clean code, accessibility, and modern web standards.</p>
+        <div class="exp-person">
+          <img src="Frontend.jpg" alt="Jayeoba Demilade" />
+          <div><div class="name">Jayeoba Demilade</div><div class="role">Frontend Developer</div></div>
+        </div>
+      </article>
+
+      <article class="exp-card reveal">
+        <div class="exp-meta">
+          <time datetime="2026-03">Mar 2026 – Oct 2026</time>
+          <span class="exp-badge">Onsite</span>
+        </div>
+        <h3>Graduate Intern</h3>
+        <p class="company">E-Cornerstone Online Resources, Abeokuta</p>
+        <p>Assisted with solar panel installation and wiring under supervision. Helped survey sites and measure rooftops or open land for installation planning.</p>
+        <div class="exp-person">
+          <img src="e-cornerstone.jpg" alt="Jayeoba Demilade" />
+          <div><div class="name">Jayeoba Demilade</div><div class="role">Electrical Engineering Intern</div></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<div class="mech-divider"></div>
+
+<!-- ── ENGINEERING PROJECTS ───────────────────────────────── -->
+<section id="eng-projects">
+  <div class="wrap">
+    <div class="section-label">03 — Engineering Projects</div>
+    <h2 class="section-title" style="margin-bottom:2.5rem">Hardware &amp; Systems</h2>
+    <div class="proj-grid">
+
+      <div class="proj-card reveal">
+        <div class="proj-img">
+          <img src="AECT picture.png" alt="Automotive Electric Circuit Trainer" />
+          <div class="proj-img-overlay"></div>
+        </div>
+        <div class="proj-body">
+          <h3>Automotive Electric Circuit Trainer (AECT)</h3>
+          <p>A practical teaching device that illustrates basic and advanced electrical circuitry used in modern automobiles.</p>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-img">
+          <img src="project 4.png" alt="Color Sorting Machine" />
+          <div class="proj-img-overlay"></div>
+        </div>
+        <div class="proj-body">
+          <h3>Color-Sorting Machine</h3>
+          <p>An automated color identification and sorting system for different materials, built using TCS sensors and a servo-driven conveyor.</p>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-img">
+          <img src="solar.jpg" alt="Solar Efficiency Tracker" />
+          <div class="proj-img-overlay"></div>
+        </div>
+        <div class="proj-body">
+          <h3>Dual-Axis Solar Tracker</h3>
+          <p>A dual-axis solar tracking system that increases energy harvest by 35% compared to static installations.</p>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-img">
+          <img src="Automotive dustbin 1.jpg" alt="Self-Actuating Waste Receptacle" />
+          <div class="proj-img-overlay"></div>
+        </div>
+        <div class="proj-body">
+          <h3>Proximity-Triggered Smart Bin</h3>
+          <p>A sensor-driven, electromechanical bin featuring an IR proximity detector, microcontroller logic, and servo-actuated lid.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="mech-divider"></div>
+
+<!-- ── FRONTEND PROJECTS ──────────────────────────────────── -->
+<section id="fe-projects">
+  <div class="wrap">
+    <div class="section-label">04 — Frontend Projects</div>
+    <h2 class="section-title" style="margin-bottom:2.5rem">Web &amp; UI Work</h2>
+    <div class="proj-grid">
+
+      <div class="proj-card reveal">
+        <div class="proj-img">
+          <img src="project 1.png" alt="AECT Interface" />
+          <div class="proj-img-overlay"></div>
+        </div>
+        <div class="proj-body">
+          <h3>AECT Interface</h3>
+          <p>An interactive simulation platform designed to teach automotive electrical systems. Built with HTML, CSS, and JavaScript.</p>
+          <a href="https://aect-interface.netlify.app/" target="_blank" class="proj-link">
+            View Project
+            <svg viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-img">
+          <img src="GuichetGPT Project.png" alt="GuichetGPT" />
+          <div class="proj-img-overlay"></div>
+        </div>
+        <div class="proj-body">
+          <h3>GuichetGPT</h3>
+          <p>An AI-powered government visa portal providing intelligent guidance, automated responses, and real-time applicant support.</p>
+          <a href="#" class="proj-link">
+            Coming Soon
+            <svg viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-img">
+          <img src="Smartteller.png" alt="SmartTeller Website" />
+          <div class="proj-img-overlay"></div>
+        </div>
+        <div class="proj-body">
+          <h3>SmartTeller Website</h3>
+          <p>Official website for SmartTeller Hub — UI/UX designed and built using Bootstrap and PHP.</p>
+          <a href="https://smartteller.tech/" target="_blank" class="proj-link">
+            View Project
+            <svg viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-img">
+          <img src="Portfolio website.png" alt="Portfolio Website" />
+          <div class="proj-img-overlay"></div>
+        </div>
+        <div class="proj-body">
+          <h3>Portfolio Website</h3>
+          <p>A responsive portfolio site built with HTML, CSS, and JavaScript, showcasing projects, experiences, and contact details.</p>
+          <a href="https://demijayc.netlify.app/" target="_blank" class="proj-link">
+            View Project
+            <svg viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-img">
+          <img src="solaritemall.png" alt="Solarite Mall" />
+          <div class="proj-img-overlay"></div>
+        </div>
+        <div class="proj-body">
+          <h3>Solarite Mall</h3>
+          <p>Official e-commerce site for E-Cornerstone Online Resources — customers can browse, order, pay, and get products delivered nationwide.</p>
+          <a href="https://solaritemall.com/index.php" target="_blank" class="proj-link">
+            View Project
+            <svg viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-img">
+          <img src="Kolade Portfolio.png" alt="Portfolio Website" />
+          <div class="proj-img-overlay"></div>
+        </div>
+        <div class="proj-body">
+          <h3>Portfolio Website</h3>
+          <p>Another responsive portfolio site built with HTML, CSS, and JavaScript, showcasing projects, experiences, and contact details.</p>
+          <a href="https://koladeadediji.netlify.app/" target="_blank" class="proj-link">
+            View Project
+            <svg viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="mech-divider"></div>
+
+<!-- ── TOOLS ──────────────────────────────────────────────── -->
+<section id="tools">
+  <div class="wrap">
+    <div class="tools-header reveal">
+      <div class="section-label" style="justify-content:center;margin-bottom:.75rem">05 — Toolbox</div>
+      <h2 class="section-title">Tools I Work With</h2>
+    </div>
+    <div class="tools-wrap reveal">
+      <span class="tool-chip chip-red">HTML</span>
+      <span class="tool-chip chip-purple">Bootstrap</span>
+      <span class="tool-chip chip-yellow">JavaScript</span>
+      <span class="tool-chip chip-blue">React</span>
+      <span class="tool-chip chip-orange">Git / GitHub</span>
+      <span class="tool-chip chip-cyan">Tailwind CSS</span>
+      <span class="tool-chip chip-green">Next.js</span>
+      <span class="tool-chip chip-slate">Python</span>
+      <span class="tool-chip chip-indigo">Arduino</span>
+    </div>
+  </div>
+</section>
+
+<div class="mech-divider"></div>
+
+<!-- ── CONTACT ────────────────────────────────────────────── -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-wrap">
+      <div class="contact-header reveal">
+        <div class="section-label" style="justify-content:center;margin-bottom:.75rem">06 — Contact</div>
+        <h2 class="section-title">Let's Build Something</h2>
+        <p>Have a project in mind or just want to say hi? My inbox is always open.</p>
+      </div>
+      <form id="contact-form" class="form-grid reveal">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Full Name" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+        </div>
+        <div class="field form-full">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="I have an idea..." required />
+        </div>
+        <div class="field form-full">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell me more..." required></textarea>
+        </div>
+        <div class="form-full">
+          <button type="submit" class="btn-send">Send Message →</button>
+        </div>
+      </form>
+      <div class="social-row reveal">
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/demilade-jayeoba-3b80752b1" target="_blank" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5H4.5V24H.5V8.5zM8.5 8.5H12.2V10.3H12.3C12.8 9.3 14 8 16 8 19.6 8 20 10.3 20 13.5V24H16V14.5C16 12.8 15.7 11 13.8 11 11.8 11 11.5 12.6 11.5 14.5V24H7.5V8.5H8.5Z"/></svg>
+        </a>
+        <!-- X/Twitter -->
+        <a href="https://x.com/itsjust_jayc" target="_blank" aria-label="Twitter/X">
+          <svg viewBox="0 0 24 24"><path d="M18.36 2H21.65L14.64 10.17L23 22H16.52L11.45 15.12L5.67 22H2.38L9.82 13.23L2 2H8.63L13.19 8.23L18.36 2ZM17.23 20H19.04L7.17 4H5.24L17.23 20Z"/></svg>
+        </a>
+        <!-- GitHub -->
+        <a href="https://github.com/itsjustjayc" target="_blank" aria-label="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.4 0 12.07C0 17.36 3.44 21.8 8.21 23.39C8.82 23.5 9.05 23.15 9.05 22.84C9.05 22.56 9.04 21.73 9.03 20.73C5.67 21.46 4.97 19.18 4.97 19.18C4.43 17.86 3.63 17.5 3.63 17.5C2.55 16.77 3.71 16.78 3.71 16.78C4.91 16.87 5.54 18.05 5.54 18.05C6.6 19.87 8.32 19.35 9.02 19.06C9.13 18.28 9.43 17.77 9.76 17.47C7.11 17.15 4.34 16.12 4.34 11.5C4.34 10.19 4.81 9.12 5.61 8.3C5.48 8 5.07 6.75 5.73 5.07C5.73 5.07 6.74 4.75 9.03 6.33C9.99 6.07 11.03 5.94 12.07 5.94C13.11 5.94 14.15 6.07 15.11 6.33C17.39 4.75 18.4 5.07 18.4 5.07C19.06 6.75 18.66 8 18.53 8.3C19.34 9.12 19.8 10.19 19.8 11.5C19.8 16.14 17.02 17.14 14.36 17.47C14.78 17.84 15.15 18.6 15.15 19.73C15.15 21.3 15.13 22.45 15.13 22.84C15.13 23.15 15.36 23.51 15.98 23.39C20.74 21.8 24.18 17.36 24.18 12.07C24.18 5.4 18.81 0 12 0Z"/></svg>
+        </a>
+        <!-- Email -->
+        <a href="mailto:jayeobademilade@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <p>© 2026 Demilade Jayeoba</p>
+      <span>Frontend Developer<span class="footer-dot">◆</span>Mechatronics Engineer</span>
+      <span>Nigeria 🇳🇬</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ── SCRIPTS ────────────────────────────────────────────── -->
+<script>
+  /* Mobile menu */
+  const toggle = document.getElementById('menu-toggle');
+  const mob    = document.getElementById('mobile-menu');
+  toggle.addEventListener('click', () => {
+    const open = mob.classList.toggle('open');
+    toggle.textContent = open ? '✕' : '☰';
+  });
+  function closeMenu() {
+    mob.classList.remove('open');
+    toggle.textContent = '☰';
+  }
+
+  /* Scroll reveal */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* EmailJS */
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('.btn-send');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    emailjs.sendForm('porfolio_webmessages', 'template_lzwmz7g', this).then(
+      () => {
+        btn.textContent = 'Message Sent ✓';
+        form.reset();
+        setTimeout(() => { btn.textContent = 'Send Message →'; btn.disabled = false; }, 3000);
+      },
+      (err) => {
+        btn.textContent = 'Failed — Try Again';
+        btn.disabled = false;
+        console.error(err);
+      }
+    );
+  });
+</script>
+
+</body>
+</html>
